@@ -3,12 +3,12 @@ import sys
 
 def clean(hard=False):
     for filename in os.listdir('planes'):
-        os.remove(filename)
+        os.remove("planes/" + filename)
     for filename in os.listdir('meshes'):
-        os.remove(filename)
+        os.remove("meshes/" + filename)
     if hard:
         for filename in os.listdir('results'):
-            os.remove(filename)
+            os.remove("results/" + filename)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
