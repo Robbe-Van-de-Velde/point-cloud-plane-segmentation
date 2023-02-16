@@ -1,1 +1,1 @@
-# point-cloud-plane-segmentation
+# Point cloud segmentation
