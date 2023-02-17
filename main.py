@@ -14,9 +14,16 @@ if __name__ == "__main__":
         if not os.path.exists(filename):
             print(f"The file {filename} does not exists")
         else:
+            print("Detecting planes...")
             DetectPlanes(filename)
+
+            print("Converting planes to meshes...")
             PlanesToMeshes()
+
+            print("Calculating surface areas...")
             CalculateSurfaces()
+
+            print("Viewing point cloud...")
             ViewResult()
 
 

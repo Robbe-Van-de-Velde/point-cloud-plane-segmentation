@@ -18,7 +18,7 @@ def PlanesToMeshes():
             pcd.estimate_normals()
 
             # Create a mesh from the point cloud, with ball pivoting
-            radii = [0.005, 0.01, 0.02, 0.04]
+            radii = [0.25, 0.25, 0.25, 0.25]
             rec_mesh = o3d.geometry.TriangleMesh.create_from_point_cloud_ball_pivoting(
                 pcd, o3d.utility.DoubleVector(radii))
 
@@ -27,3 +27,5 @@ def PlanesToMeshes():
                 os.makedirs("meshes")
 
             o3d.io.write_triangle_mesh(os.path.join("meshes", mesh_file), rec_mesh)
+
+    print("Successfully converted planes to meshes.")

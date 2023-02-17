@@ -33,3 +33,4 @@ def CalculateSurfaces():
         writer.writerow(['Segment', 'Surface area']) # Write header row
         for key, value in results.items():
             writer.writerow([key, value])
+        print("Successfully wrote results to file: output.csv")
