@@ -11,6 +11,8 @@ def PlanesToMeshes():
         file_path = os.path.join("planes", filename)
         mesh_file = filename.replace("plane", "mesh")
         if os.path.isfile(file_path):
+            print(f"Converting {filename} to mesh...")
+
             # Load point cloud from file
             pcd = o3d.io.read_point_cloud(file_path)
 
@@ -18,7 +20,7 @@ def PlanesToMeshes():
             pcd.estimate_normals()
 
             # Create a mesh from the point cloud, with ball pivoting
-            radii = [0.25, 0.25, 0.25, 0.25]
+            radii = [0.005, 0.01, 0.02, 0.04]
             rec_mesh = o3d.geometry.TriangleMesh.create_from_point_cloud_ball_pivoting(
                 pcd, o3d.utility.DoubleVector(radii))
 
