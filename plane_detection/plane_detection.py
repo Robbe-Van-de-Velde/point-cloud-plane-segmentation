@@ -116,7 +116,7 @@ def DetectPlanes(filename):
         # Save plane to PLY file
         pcd = o3d.geometry.PointCloud()
         pcd.points = o3d.utility.Vector3dVector(plane)
-        pcd.colors = o3d.utility.Vector3dVector(colors[i])
+        pcd.colors = o3d.utility.Vector3dVector(colors[i + 1])
 
         o3d.io.write_point_cloud(f'planes/plane_{i}.ply', pcd)
 
