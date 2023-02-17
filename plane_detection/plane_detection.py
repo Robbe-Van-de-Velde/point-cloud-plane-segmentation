@@ -1,6 +1,7 @@
 import numpy as np
 import open3d as o3d
 import os
+from plane_detection.color_generator import GenerateColors
 
 def ReadPlyPoint(fname):
     """ read point from ply
@@ -166,21 +167,22 @@ def DetectPlanes(filename):
     results = DetectMultiPlanes(points, min_ratio=0.05, threshold=0.005, iterations=2000)
     print('Time:', time.time() - t0)
     planes = []
+    generated_colors = GenerateColors(len(results))
     colors = []
-    for _, plane in results:
 
-        r = random.random()
-        g = random.random()
-        b = random.random()
+    for i, (w, plane) in enumerate(results):
+        r = generated_colors[i][0] / 255
+        g = generated_colors[i][1] / 255
+        b = generated_colors[i][2] / 255
 
         color = np.zeros((plane.shape[0], plane.shape[1]))
         color[:, 0] = r
         color[:, 1] = g
         color[:, 2] = b
 
-        planes.append(plane)
         colors.append(color)
-    
+        planes.append(plane)
+
     planes = np.concatenate(planes, axis=0)
     colors = np.concatenate(colors, axis=0)
     SaveResult(planes, colors)

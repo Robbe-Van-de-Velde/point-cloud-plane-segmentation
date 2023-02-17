@@ -1,8 +1,8 @@
 import sys
 import os
-from plane_detection import DetectPlanes
-from plane_to_mesh import PlanesToMeshes
-from surface_calculator import CalculateSurfaces
+from plane_detection.plane_detection import DetectPlanes
+from plane_detection.plane_to_mesh import PlanesToMeshes
+from plane_detection.surface_calculator import CalculateSurfaces
 from view_data import ViewPointCloud, ViewMesh, ViewResult
 
 if __name__ == "__main__":
