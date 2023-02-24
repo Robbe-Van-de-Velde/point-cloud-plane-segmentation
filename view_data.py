@@ -11,7 +11,7 @@ def ViewPointCloud(filename):
     o3d.visualization.draw_geometries([pcd])
 
 def ViewResult():
-    filename = "results/result-classified.ply"
+    filename = "data/results/result-classified.ply"
     ViewPointCloud(filename)
 
 if __name__ == "__main__":
