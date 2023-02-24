@@ -24,7 +24,7 @@ def CalculateSurfaces():
     # Write the results to a csv file
     with open("data/results/results.csv", "w") as f:
         writer = csv.writer(f)
-        writer.writerow(["Plane", "Surface area"])
+        writer.writerow(["Segment", "Surface area"])
         for key, value in results.items():
             writer.writerow([key, value])
 

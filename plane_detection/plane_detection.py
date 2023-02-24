@@ -7,7 +7,7 @@ def SaveResult(planes):
     for plane in planes:
         pcds += plane
 
-    o3d.io.write_point_cloud("data/results/result.ply", pcds)
+    o3d.io.write_point_cloud("data/results/result-classified.ply", pcds)
 
 # Detect planes solely based on RANSAC
 def DetectPlanes(filename):
