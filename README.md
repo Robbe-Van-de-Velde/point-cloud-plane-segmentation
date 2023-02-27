@@ -37,7 +37,3 @@ There is also a cleanup function to remove the planes, meshes and result folder 
     python clean.py # Removes all planes and meshes
     python clean.py hard # Removes all planes, meshes and results 
 </code>
-
-#### Credits
-
-The plane_detection code is based on the following repository, but has been modified for our purposes: <link>https://github.com/yuecideng/Multiple_Planes_Detection</link>
