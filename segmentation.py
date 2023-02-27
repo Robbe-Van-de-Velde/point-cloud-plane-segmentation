@@ -5,7 +5,7 @@ from view_data import ViewPointCloud, ViewMesh, ViewResult
 
 
 
-def SegmentPointCloud(filename, minimum_number, waitingScreen):
+def SegmentPointCloud(filename):
     # Check if the file exists
     print("Checking if the file exists...")
     if not os.path.exists(filename):
@@ -22,10 +22,10 @@ def SegmentPointCloud(filename, minimum_number, waitingScreen):
         os.makedirs("data/results")
 
     print("Detecting planes...")
-    DetectPlanes(filename, minimum_number, waitingScreen)
+    DetectPlanes(filename)
 
     print("Calculating surface areas...")
-    CalculateSurfaces(waitingScreen)
+    CalculateSurfaces()
 
     print("Viewing point cloud...")
     ViewResult()

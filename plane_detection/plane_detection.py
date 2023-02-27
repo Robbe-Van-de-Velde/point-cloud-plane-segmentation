@@ -10,7 +10,7 @@ def SaveResult(planes):
 
     o3d.io.write_point_cloud("data/results/result-classified.ply", pcds)
 
-def SegmentPlanes(pcd, waitingScreen, min_ratio=0.05, threshold=0.01, iterations=1000, cluster=False):
+def SegmentPlanes(pcd, min_ratio=0.05, threshold=0.01, iterations=1000, cluster=False):
     # Prepare necessary variables
     points = np.asarray(pcd.points)
     planes = []
@@ -65,10 +65,9 @@ def SegmentPlanes(pcd, waitingScreen, min_ratio=0.05, threshold=0.01, iterations
     return planes
 
 # Detect planes solely based on RANSAC
-def DetectPlanes(filename, minimum_number, waitingScreen):
+def DetectPlanes(filename):
     # Load in point cloud
     print("Loading point cloud...")
-    waitingScreen.progress.emit("Loading point cloud...")
     pcd = o3d.io.read_point_cloud(filename)
 
     # Preprocess the point cloud
@@ -84,18 +83,15 @@ def DetectPlanes(filename, minimum_number, waitingScreen):
 
     # Segment the planes
     print("Segmenting planes...")
-    waitingScreen.progress.emit("Segmenting planes...")
-    planes = SegmentPlanes(pcd, waitingScreen, cluster=True)
+    planes = SegmentPlanes(pcd, cluster=True)
 
     # Generate range of colors
     colors = GenerateColors(len(planes))
 
     print("Planes detected: " + str(len(planes)))
-    waitingScreen.progress.emit("Planes detected: " + str(len(planes)))
 
     # Loop through each plane and save it to a file
     print("Saving planes...")
-    waitingScreen.progress.emit("Saving planes...")
     for i, plane in enumerate(planes):
         r = colors[i][0] / 255
         g = colors[i][1] / 255
@@ -106,5 +102,4 @@ def DetectPlanes(filename, minimum_number, waitingScreen):
     
     # Save the result
     print("Saving result...")
-    waitingScreen.progress.emit("Saving result...")
     SaveResult(planes)

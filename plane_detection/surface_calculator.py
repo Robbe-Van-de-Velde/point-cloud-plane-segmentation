@@ -4,11 +4,10 @@ import numpy as np
 import os
 import csv
 
-def CalculateSurfaces(waitingScreen):
+def CalculateSurfaces():
     results = {}
 
     # Iterate over all files in directory
-    waitingScreen.progress.emit("Calculating surface areas...")
     for i, filename in enumerate(os.listdir("data/planes")):
         file_path = os.path.join("data/planes", filename)
 
@@ -23,7 +22,6 @@ def CalculateSurfaces(waitingScreen):
 
     # Write the results to a csv file
     print("Writing results to a csv file...")
-    waitingScreen.progress.emit("Writing results to a csv file...")
     with open("data/results/output.csv", "w", newline='') as f:
         writer = csv.writer(f)
         writer.writerow(["Segment", "Surface area"])
